@@ -3,6 +3,8 @@
 
 参考书籍《Django企业开发实战 高效Python Web框架指南》
 
+参考：https://github.com/the5fire/typeidea
+
 ## 命令
 创建项目：
 django-admin startproject project_name
