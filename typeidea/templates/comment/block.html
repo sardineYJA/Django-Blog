@@ -1,0 +1,26 @@
+<hr/>
+<div>
+    <form action="/comment/" method="POST">
+        {% csrf_token %}
+        <input name="target" type="hidden" value="{{ request.path }}"/>
+        {{ comment_form }}
+        <input type="submit" value="写好了！"/>
+    </form>
+
+    <!-- 评论列表 -->
+    <ul>
+        {% for comment in comment_list %}
+        <li>
+            <div>
+                <a href="{{ comment.website }}">{{ comment.nickname }}</a>
+                <span>{{ comment.created_time }}</span>
+            </div>
+            <div>
+                {% autoescape off %}     <!-- 关闭自动转码功能，否则Markdown不会被浏览器渲染 -->
+                {{ comment.content }}
+                {% endautoescape %}
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
